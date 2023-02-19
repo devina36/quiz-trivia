@@ -1,0 +1,11 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main-login {
+  background: url(./assets/waves.svg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+}

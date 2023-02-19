@@ -1,7 +1,8 @@
-import { Button, Container, createTheme, Alert, Grid, TextField, ThemeProvider } from '@mui/material';
+import { Button, Container, createTheme, Alert, Grid, TextField, ThemeProvider, Paper } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../index.css';
 
 const theme = createTheme({
   palette: {
@@ -41,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <main className="main-login">
       <ThemeProvider theme={theme}>
         <Container maxWidth="xs" sx={{ position: 'relative' }}>
           <Alert
@@ -60,57 +61,61 @@ const Login = () => {
           >
             The email address or password is incorrect
           </Alert>
-          <form onSubmit={handleSubmit}>
-            <Grid container rowSpacing={5} direction="column" justifyContent="center" minHeight="100vh">
-              <Grid item>
-                <TextField
-                  fullWidth
-                  required
-                  onChange={(e) => setValues({ ...values, email: e.target.value })}
-                  color="blaxk"
-                  type="email"
-                  label="Email"
-                  variant="standard"
-                  focused
-                />
-              </Grid>
-              <Grid item>
-                <TextField
-                  fullWidth
-                  required
-                  onChange={(e) => setValues({ ...values, pass: e.target.value })}
-                  color="blaxk"
-                  type="password"
-                  label="Password"
-                  variant="standard"
-                  focused
-                />
-              </Grid>
-              <Grid item>
-                <Button
-                  type="submit"
-                  sx={{
-                    backgroundColor: 'black',
-                    borderRadius: 99,
-                    border: '2px solid #000',
+          <Grid direction="column" justifyContent="center" minHeight="100vh" container>
+            <form onSubmit={handleSubmit}>
+              <Paper elevation={5} sx={{ padding: 5, borderRadius: 2 }}>
+                <Grid container rowSpacing={5} direction="column" justifyContent="center">
+                  <Grid item>
+                    <TextField
+                      fullWidth
+                      required
+                      onChange={(e) => setValues({ ...values, email: e.target.value })}
+                      color="blaxk"
+                      type="email"
+                      label="Email"
+                      variant="standard"
+                      focused
+                    />
+                  </Grid>
+                  <Grid item>
+                    <TextField
+                      fullWidth
+                      required
+                      onChange={(e) => setValues({ ...values, pass: e.target.value })}
+                      color="blaxk"
+                      type="password"
+                      label="Password"
+                      variant="standard"
+                      focused
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      type="submit"
+                      sx={{
+                        backgroundColor: '#4D5B9E',
+                        borderRadius: 2,
+                        border: '2px solid #000',
 
-                    ':hover': {
-                      backgroundColor: '#fff',
-                      color: '#000',
-                      border: '2px solid #000',
-                    },
-                  }}
-                  fullWidth
-                  variant="contained"
-                >
-                  Log in
-                </Button>
-              </Grid>
-            </Grid>
-          </form>
+                        ':hover': {
+                          backgroundColor: 'transparent',
+                          color: '#000',
+                          border: '2px solid #4D5B9E',
+                        },
+                      }}
+                      fullWidth
+                      variant="contained"
+                    >
+                      Sign in
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </form>
+          </Grid>
         </Container>
       </ThemeProvider>
-    </>
+    </main>
   );
 };
 
